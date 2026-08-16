@@ -8,10 +8,10 @@ Three-minute argument for [Creative Lead @ Krea](https://jobs.ashbyhq.com/krea/1
 
 ## Live
 
-- Site: `https://krea.moises.tech` (after deploy)
+- Site: [moises-for-krea.vercel.app](https://moises-for-krea.vercel.app)
 - Flagship replay: [krea-field-studio.vercel.app/replay](https://krea-field-studio.vercel.app/replay)
 - Source: [github.com/moisestech/krea-field-studio](https://github.com/moisestech/krea-field-studio)
-- CI: [Actions](https://github.com/moisestech/krea-field-studio/actions)
+- CI: [Field Studio Actions](https://github.com/moisestech/krea-field-studio/actions)
 
 ## Routes
 

@@ -16,6 +16,7 @@ export const evidenceCards = [
     story: 'A Krea-powered client workflow from brief to approved proposal and product field note.',
     proof: 'Replay, source, 90-second path',
     href: '/field-studio',
+    external: false,
     claim: 'replay' as Claim,
     image:
       'https://res.cloudinary.com/dck5rzi4h/image/upload/v1738035709/art/moisestech-website/price_of_existence_wideshot.png',
@@ -27,6 +28,7 @@ export const evidenceCards = [
     story: 'Multimodal storytelling product work for actual creators.',
     proof: 'Redacted case study, product media, role context',
     href: '/work/lore-machine',
+    external: false,
     claim: 'case study' as Claim,
     image:
       'https://res.cloudinary.com/dck5rzi4h/image/upload/v1780253940/resume/resume-images/lore-machine-home-page_wra1x2.png',
@@ -38,6 +40,7 @@ export const evidenceCards = [
     story: 'Creative technology translated into workshops, services, and operating infrastructure.',
     proof: 'Workshop record, systems diagram, selected outcomes',
     href: '/work/oolite-digital-lab',
+    external: false,
     claim: 'case study' as Claim,
     image:
       'https://res.cloudinary.com/dck5rzi4h/image/upload/v1781710428/oolite-arts/oolite-arts-computer-vision-digilab-room-upscale-cyan-1030x579_whqmlg.webp',
