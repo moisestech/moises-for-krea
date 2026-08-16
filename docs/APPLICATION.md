@@ -27,7 +27,7 @@ I turn frontier creative AI into workflows people can trust, learn, and ship wit
 
 Proof, in under three minutes:
 
-- Application site: https://krea.moises.tech (after DNS) or the Vercel production URL
+- Application site: https://moises-for-krea.vercel.app (krea.moises.tech after DNS)
 - Flagship replay (no login): https://krea-field-studio.vercel.app/replay
 - Source + CI: https://github.com/moisestech/krea-field-studio
 - Evidence map: /evidence on the application site
@@ -42,8 +42,8 @@ Subject: Creative Lead — a 90-second client workflow
 
 I’m Moises Sanabria. I built an unofficial Krea Field Studio that takes a curator brief to an approved proposal and a product field note, with humans still choosing taste.
 
-Replay (no credentials): https://field-studio.moises.tech/replay  
-Argument: https://krea.moises.tech
+Replay (no credentials): https://krea-field-studio.vercel.app/replay
+Argument: https://moises-for-krea.vercel.app
 
 Not a CD deck. Not a fullstack take-home. A demo of the job.
 
@@ -52,9 +52,11 @@ Miami-based; ready to relocate to SF. Happy to run this on a real Krea enterpris
 ## Do not submit until
 
 - [x] Replay golden path works without credentials
-- [ ] Field Studio and this site are deployed on the moises.tech subdomains
-- [ ] GitHub profile pins inspectable proof (agentic-evidence-pipeline, then Field Studio)
-- [ ] AI24-app / modern-runwayml starter READMEs repaired or archived
-- [ ] One live Krea run recorded **or** live status stays labeled planned
+- [x] Field Studio source is public with green CI
+- [ ] GitHub pins: `krea-field-studio`, then `agentic-evidence-pipeline`, optionally `moises-for-krea`
+- [ ] `field-studio.moises.tech` and `krea.moises.tech` resolve (Orderbox CNAME)
+- [ ] One live Krea run recorded **or** live status stays labeled **PLANNED**
+
+Do not block submit on Infra24, AI24-app, or modern-runwayml README repair. Those are cleanup, not application gates.
 
 Submitting the Ashby form is a human step after those gates.

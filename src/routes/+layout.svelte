@@ -7,6 +7,13 @@
   <title>Moises Sanabria × Krea</title>
   <meta name="description" content="Creative Lead application: I turn frontier creative AI into workflows people can trust, learn, and ship with." />
   <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Moises Sanabria × Krea" />
+  <meta property="og:description" content="Creative Lead application. Replay-first Field Studio: brief to proposal and product field note." />
+  <meta property="og:image" content="https://moises-for-krea.vercel.app/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://moises-for-krea.vercel.app/og.png" />
 </svelte:head>
 
 <div class="shell">
