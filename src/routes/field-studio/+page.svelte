@@ -1,76 +1,149 @@
 <script lang="ts">
-  import { FIELD_STUDIO } from '$lib/content';
+  import ProofSheet from '$lib/components/ProofSheet.svelte';
+  import StickyCta from '$lib/components/StickyCta.svelte';
+  import {
+    FIELD_STUDIO,
+    FIELD_STUDIO_CI,
+    FIELD_STUDIO_REPLAY,
+    FIELD_STUDIO_REPO,
+    filmstrip,
+    proofSheet,
+    realVersusReplay
+  } from '$lib/content';
 </script>
 
-<p class="claim">replay · case study</p>
-<h1>Krea Field Studio</h1>
+<svelte:head>
+  <title>Krea Field Studio — case study</title>
+</svelte:head>
+
+<p class="claim">REPLAY · UNOFFICIAL PROOF OF WORK</p>
+<h1>From curator brief to an approved proposal—and back to a product field note.</h1>
 <p class="lede">
-  Unofficial proof of work: turn a curator brief and owned assets into controlled visual directions,
-  a human-approved refinement, a proposal board, and a product field note.
+  Field Studio is a Krea-integrated workflow prototype for exhibition previsualization. It keeps the human
+  in charge of constraints, taste, approval, and spend while making asynchronous generation inspectable.
+</p>
+<p class="ctas">
+  <a class="primary" href={FIELD_STUDIO_REPLAY}>Run replay</a>
+  <a class="ghost" href={FIELD_STUDIO_REPO}>Source / README</a>
 </p>
 
-<h2>Client problem</h2>
-<p>
-  A curator needs to see how <em>Price of Existence</em> could sit in a white-cube bay before a site visit.
-  The conversation usually dies in a folder of unranked generations.
-</p>
+<ProofSheet sheet={proofSheet} large />
+<StickyCta extra={{ href: FIELD_STUDIO_REPO, label: 'Source + CI' }} />
 
-<h2>Current workflow friction</h2>
-<p>
-  Model capability is ahead of team adoption. People can get images. They cannot tell what was meant to be
-  preserved, what was allowed to change, or which still is a decision versus a mood.
-</p>
+<section>
+  <h2>Problem → intervention → evidence</h2>
+  <div class="tri">
+    <article>
+      <h3>Problem</h3>
+      <p>Generations become an unranked folder. Constraints and decisions disappear.</p>
+    </article>
+    <article>
+      <h3>Intervention</h3>
+      <p>Preservation constraints travel from brief to payload to comparison and handoff.</p>
+    </article>
+    <article>
+      <h3>Evidence</h3>
+      <p>Replay, provider boundary, exact Krea states, failure path, proposal, trace, field note.</p>
+    </article>
+  </div>
+</section>
 
-<h2>Why Krea</h2>
-<p>
-  Krea 2 Medium exposes control the job actually needs: aspect, img2img strength, style references, creativity.
-  Jobs are asynchronous with inspectable states. That is the Creative Lead surface — not a prompt screenshot.
-</p>
+<section>
+  <h2>The 90-second run</h2>
+  <ol class="film">
+    {#each filmstrip as frame, i}
+      <li>
+        <a href={FIELD_STUDIO_REPLAY}>
+          <img src={frame.src} alt={`${frame.title}. Replay fixture, not a live Krea output.`} />
+          <span class="n">0{i + 1}</span>
+          <strong>{frame.title}</strong>
+          <p>{frame.body}</p>
+        </a>
+      </li>
+    {/each}
+  </ol>
+</section>
 
-<h2>Designed workflow</h2>
-<ol>
-  <li>Brief + owned assets</li>
-  <li>Three lanes (faithful / material / surprise) with reasons</li>
-  <li>Explicit approval before spend</li>
-  <li>Six async jobs, exact Krea states</li>
-  <li>Compare — keyboard, no auto-rank</li>
-  <li>Up to three refinements + optional 5s motion</li>
-  <li>Proposal board with limitations</li>
-  <li>Operator-authored field note</li>
-</ol>
+<section>
+  <h2>What is real</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Surface</th><th>State</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        {#each realVersusReplay as row}
+          <tr>
+            <td>{row.surface}</td>
+            <td class="mono">{row.state}</td>
+            <td>{row.evidence}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+</section>
 
-<h2>Real versus replay</h2>
-<p>
-  Public default is <strong>replay</strong>: deterministic fixtures, no credentials, no variable cost.
-  <code>KreaGenerationProvider</code> is implemented against documented OpenAPI. A recorded live run waits on
-  API balance (a separate USD wallet from app compute units).
-</p>
+<section>
+  <h2>Customer friction → product signal</h2>
+  <pre class="diagram">{`client brief
+    ↓
+preserve/change constraints
+    ↓
+approved Krea request plan
+    ↓
+job states + human review
+    ↓
+proposal decision
+    ↓
+field note: friction / reproduction / opportunity
+    ↺ product + enablement`}</pre>
+  <p>
+    The product insight is not “use better prompts.” It is that constraints and decisions need a durable
+    path through the workflow.
+  </p>
+</section>
 
-<h2>Failure and limitation notes</h2>
-<ul>
-  <li>Not CAD, scale, structure, or permitting.</li>
-  <li>Mock failure mode shows a failed job, cancel, and duplicate webhook no-op.</li>
-  <li>Replay stills are labeled REPLAY until a funded live run replaces them.</li>
-</ul>
+<section>
+  <h2>Architecture and failure</h2>
+  <ul>
+    <li>Server-only key. No anonymous inference.</li>
+    <li>Fixture / Krea provider boundary.</li>
+    <li>Polling for the recorded local run; webhook exists but the replay ledger is in-memory.</li>
+    <li>Job-ID correlation and duplicate delivery idempotency.</li>
+    <li>Cancellation while allowed; partial completion remains reviewable.</li>
+  </ul>
+</section>
 
-<h2>What the exercise taught us about the product</h2>
-<p>
-  Preservation constraints need to travel from brief → generation payload → comparison annotations.
-  If they only live in a prompt paragraph, the client cannot audit them.
-</p>
-
-<p>
-  <a class="primary" href="{FIELD_STUDIO}/replay">Run replay</a>
-  <a href="{FIELD_STUDIO}">Source / README</a>
-  <a href="/technical-notes">Technical notes</a>
+<p class="ctas">
+  <a class="primary" href={FIELD_STUDIO_REPLAY}>Run the 90-second replay</a>
+  <a class="ghost" href={FIELD_STUDIO_CI}>Source + CI</a>
+  <a class="ghost" href="{FIELD_STUDIO}/trace/replay-price-of-existence">Inspect run trace</a>
 </p>
 
 <style>
   .claim { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #555; }
-  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); max-width: 16ch; }
-  .lede { max-width: 40rem; font-size: 1.08rem; }
-  .primary {
-    display: inline-block; margin-right: 0.6rem; padding: 0.7rem 1rem;
-    background: var(--ink); color: var(--paper); text-decoration: none; border: 1px solid var(--ink);
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); max-width: 18ch; }
+  .lede { max-width: 42rem; font-size: 1.08rem; }
+  .primary, .ghost {
+    display: inline-flex; align-items: center; min-height: 44px; margin: 0 0.6rem 0.6rem 0;
+    padding: 0.55rem 1rem; text-decoration: none; border: 1px solid var(--ink);
+  }
+  .primary { background: var(--ink); color: var(--paper); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 1.8rem; margin-top: 2.5rem; }
+  .tri, .film { display: grid; gap: 1rem; padding: 0; list-style: none; }
+  .tri { grid-template-columns: repeat(3, 1fr); }
+  .film { grid-template-columns: repeat(4, 1fr); }
+  .film a { text-decoration: none; display: block; border: 1px solid var(--line); padding: 0 0 0.75rem; min-height: 100%; }
+  .film img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; background: #fff; }
+  .film strong, .film p, .n { display: block; margin: 0.25rem 0.7rem 0; }
+  .n { font-family: var(--mono); color: var(--coral); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.65rem 0.5rem 0.65rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .mono { font-family: var(--mono); font-size: 0.78rem; }
+  .diagram { font-family: var(--mono); font-size: 0.85rem; background: #fff; padding: 1rem; border: 1px solid var(--line); }
+  @media (max-width: 900px) {
+    .tri, .film { grid-template-columns: 1fr; }
   }
 </style>

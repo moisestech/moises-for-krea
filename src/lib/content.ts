@@ -1,4 +1,7 @@
 export const FIELD_STUDIO = 'https://krea-field-studio.vercel.app';
+export const FIELD_STUDIO_REPO = 'https://github.com/moisestech/krea-field-studio';
+export const FIELD_STUDIO_CI = 'https://github.com/moisestech/krea-field-studio/actions';
+export const FIELD_STUDIO_REPLAY = `${FIELD_STUDIO}/replay`;
 export const SITE = 'https://krea.moises.tech';
 export const STUDIO = 'https://www.moises.tech';
 export const CONTACT_MAIL = 'mailto:hello@moises.tech?subject=Krea%20Creative%20Lead%20%E2%80%94%20run%20a%20client%20workflow';
@@ -60,12 +63,64 @@ export const evidenceCards = [
   }
 ] as const;
 
+export const ARTWORK =
+  'https://res.cloudinary.com/dck5rzi4h/image/upload/v1738035709/art/moisestech-website/price_of_existence_wideshot.png';
+
+export const proofSheet = {
+  kind: 'replay' as const,
+  stamp: 'REPLAY · PUBLIC · NO LOGIN · NO SPEND',
+  caption: 'Curator brief → three lanes → approval → inspectable jobs → proposal → product field note.',
+  cells: [
+    {
+      src: ARTWORK,
+      alt: 'Price of Existence, 2024 — medical skeleton wrapped in Venezuelan bolivares. Artist-owned documentation.',
+      caption: 'Owned artwork'
+    },
+    {
+      src: '/proof/site-gallery.svg',
+      alt: 'Synthetic white-cube gallery line drawing used as the site fixture. Not a surveyed venue.',
+      caption: 'Synthetic site (REPLAY)'
+    },
+    {
+      src: '/proof/faithful-1.svg',
+      alt: 'Replay fixture board for the faithful placement lane, labeled REPLAY.',
+      caption: 'Compare still (REPLAY)'
+    },
+    {
+      src: '/proof/material-1.svg',
+      alt: 'Replay fixture board for a proposal-style still, labeled REPLAY.',
+      caption: 'Proposal still (REPLAY)'
+    }
+  ]
+};
+
+export type ProofSheetData = typeof proofSheet;
+
+export const filmstrip = [
+  { title: 'Brief + owned assets', body: 'Site, artwork, and what must not change.', href: FIELD_STUDIO_REPLAY, src: '/proof/site-gallery.svg' },
+  { title: 'Three reasoned lanes', body: 'Faithful, material, surprise — with reasons, not scores.', href: FIELD_STUDIO_REPLAY, src: '/proof/faithful-1.svg' },
+  { title: 'Approval before spend', body: 'Exact model payload visible before any job starts.', href: FIELD_STUDIO_REPLAY, src: ARTWORK },
+  { title: 'Six asynchronous jobs', body: 'Exact Krea states stay inspectable beside grouped labels.', href: FIELD_STUDIO_REPLAY, src: '/proof/material-1.svg' },
+  { title: 'Human compare/select', body: 'Keyboard selection. No automated ranking.', href: FIELD_STUDIO_REPLAY, src: '/proof/faithful-1.svg' },
+  { title: 'Bounded refinements', body: 'Operator writes the change; the model does not pick a winner.', href: FIELD_STUDIO_REPLAY, src: '/proof/surprise-1.svg' },
+  { title: 'Proposal with limitations', body: 'Previz, not CAD, scale, or permitting.', href: `${FIELD_STUDIO}/proposal/replay-price-of-existence`, src: '/proof/material-1.svg' },
+  { title: 'Operator field note', body: 'Friction, reproduction, product opportunity.', href: `${FIELD_STUDIO}/trace/replay-price-of-existence`, src: '/proof/surprise-1.svg' }
+];
+
+export const realVersusReplay = [
+  { surface: 'Replay workflow', state: 'REPLAY / LIVE ON WEB', evidence: 'Public /replay, deterministic fixtures, no credentials' },
+  { surface: 'Failure and cancellation path', state: 'REPLAY / LIVE ON WEB', evidence: '/failure and tests' },
+  { surface: 'Krea provider and contracts', state: 'IMPLEMENTED', evidence: 'Source + official Krea 2 Medium docs' },
+  { surface: 'Recorded API generation', state: 'PLANNED', evidence: 'No LIVE claim before a reviewed manifest' },
+  { surface: 'Durable Postgres ledger', state: 'SCHEMA ONLY', evidence: 'Do not call wired or production-ready' }
+];
+
 export const loopSteps = [
   { id: 'listen', title: 'Hear the brief', body: 'Site, artwork, constraints, what must not change.' },
-  { id: 'map', title: 'Map a workflow', body: 'Three lanes with reasons — not a universal taste system.' },
-  { id: 'run', title: 'Run Krea under approval', body: 'Exact job states. No silent spend.' },
-  { id: 'teach', title: 'Make it legible', body: 'Compare, refine, export a board a client can argue with.' },
-  { id: 'return', title: 'Return a field note', body: 'Friction, reproduction, product opportunity, evidence.' }
+  { id: 'map', title: 'Map the workflow', body: 'Three lanes with reasons, not universal taste scores.' },
+  { id: 'run', title: 'Run under approval', body: 'Exact model payload and spend boundary before generation.' },
+  { id: 'teach', title: 'Make the result legible', body: 'Compare, refine, and package a client decision.' },
+  { id: 'return', title: 'Return the field note', body: 'Friction, reproduction, evidence, product opportunity.' }
 ];
 
 export const thirtyDays = {
