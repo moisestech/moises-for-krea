@@ -2,32 +2,32 @@
 
 **Unofficial application site. Not affiliated with or endorsed by Krea.**
 
-Three-minute argument for [Creative Lead @ Krea](https://jobs.ashbyhq.com/krea/1eb60922-3223-45ec-be02-8e43dd9e8764).
-
-> I turn frontier creative AI into workflows people can trust, learn, and ship with.
+A compact evidence site for engineering plus creative-production work: a public Field Studio replay, selected multimodal product work, creative-technology leadership, and inspectable systems source.
 
 ## Live
 
-- Site: [moises-for-krea.vercel.app](https://moises-for-krea.vercel.app)
-- Flagship replay: [krea-field-studio.vercel.app/replay](https://krea-field-studio.vercel.app/replay)
-- Source: [github.com/moisestech/krea-field-studio](https://github.com/moisestech/krea-field-studio)
-- CI: [Field Studio Actions](https://github.com/moisestech/krea-field-studio/actions)
+- Application: [moises-for-krea.vercel.app](https://moises-for-krea.vercel.app)
+- Field Studio replay: [krea-field-studio.vercel.app/replay](https://krea-field-studio.vercel.app/replay)
+- Field Studio source: [github.com/moisestech/krea-field-studio](https://github.com/moisestech/krea-field-studio)
+
+## Positioning
+
+The site now leads with the intersection Krea asked for: engineering, film and creative workflows, product judgment, and communication. It does not claim that fixture boards are Krea generations or that a walkthrough video has already been recorded.
 
 ## Routes
 
-`/` · `/field-studio` · `/evidence` · `/work/lore-machine` · `/work/oolite-digital-lab` · `/work/ai24-social-orchestra` · `/technical-notes`
+/ · /field-studio · /evidence · /work/lore-machine · /work/oolite-digital-lab · /work/ai24-social-orchestra · /technical-notes
 
 ## Local
 
-```bash
-npm install
-npm run dev
-```
+    npm install
+    npm run dev
 
-## Claims
+## Remaining asset gates
 
-Every card is labeled **live**, **replay**, **case study**, **building**, or **planned**. Agentic Ops is not claimed as public GitHub proof; Agentic Evidence Pipeline is.
+1. Capture a funded run against the current Krea API.
+2. Add clearly labeled real outputs.
+3. Record a 60–90 second founder walkthrough.
+4. Review redacted Lore Machine evidence before publishing anything confidential.
 
-## Location line
-
-Miami-based. Prepared to relocate to San Francisco for this role.
+Miami-based. Prepared to relocate to San Francisco.

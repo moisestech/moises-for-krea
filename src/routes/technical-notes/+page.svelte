@@ -1,54 +1,52 @@
 <script lang="ts">
-  import { AEP_REPO, FIELD_STUDIO } from '$lib/content';
+  import { AEP_REPO, FIELD_STUDIO_REPO } from '$lib/content';
 </script>
 
-<p class="claim">live · replay · planned</p>
+<p class="claim">implementation notes · honest boundaries</p>
 <h1>Technical notes</h1>
-<p>For engineering reviewers. Creative reviewers can skip this page.</p>
+<p>For reviewers who want the engineering claims separated from the creative narrative.</p>
 
-<h2>Krea API integration</h2>
+<h2>Provider boundary</h2>
 <ul>
-  <li>Server-only token. Client never sees <code>KREA_API_KEY</code>.</li>
-  <li>Image: <code>POST /generate/image/krea/krea-2/medium</code> — prompt, aspect_ratio, resolution required.</li>
-  <li>Video: <code>POST /generate/video/kling/kling-2.5</code> — prompt required; start_image + duration 5 for motion.</li>
-  <li>Contracts copied from public OpenAPI (2026-08-16). Krea MCP was not connected in the authoring session.</li>
-  <li>Request schemas are <code>additionalProperties: false</code> — extra fields fail closed.</li>
+  <li>The client never receives a Krea token.</li>
+  <li>The checked-in image contract targets <code>POST /generate/image/krea/krea-2/medium</code>.</li>
+  <li>The optional motion contract targets <code>POST /generate/video/kling/kling-2.5</code>.</li>
+  <li>Request schemas reject undocumented fields.</li>
+  <li>The contracts were copied from public OpenAPI on 2026-08-16 and must be revalidated before live use.</li>
 </ul>
 
-<h2>Job lifecycle and webhooks</h2>
+<h2>Public execution boundary</h2>
 <ul>
-  <li>Persisted states match Krea: backlogged → … → intermediate-complete → completed | failed | cancelled.</li>
-  <li>Webhook: correlate <code>job_id</code>, 2xx fast, idempotency key = provider + job + terminal status + payload hash.</li>
-  <li>No signature validation is claimed; Krea does not document one.</li>
-  <li>Polling every 2–5s only when a public webhook is unavailable. Stop on terminal states.</li>
+  <li>The public site creates an isolated fixture session per page load.</li>
+  <li>Session state is process memory, capped and ephemeral; no durable persistence is claimed.</li>
+  <li>Paid live execution is intentionally unavailable from public routes.</li>
+  <li>The fixture provider returns authored SVG boards. They are not represented as Krea output.</li>
 </ul>
 
-<h2>Fixture-provider contract</h2>
+<h2>State and failure behavior</h2>
+<ul>
+  <li>Exact provider states remain visible while the interface groups them for scanning.</li>
+  <li>Polling is serial at two-second intervals, stops on terminal states, and is cleaned up on navigation.</li>
+  <li>Directions cannot be selected until the associated job is completed and review is ready.</li>
+  <li>Refinement and motion both require an approved completed still; motion has a separate approval.</li>
+  <li>Webhooks accept known job IDs and terminal callbacks only. Duplicate or conflicting terminal callbacks are recorded as no-ops.</li>
+  <li>No webhook signature validation is claimed because the checked source contract does not document one.</li>
+</ul>
+
+<h2>Related systems evidence</h2>
 <p>
-  <code>GenerationProvider</code> is implemented twice: fixture (deterministic timings + local SVG outputs)
-  and Krea (official REST). Tests run the same boundary. UI never holds a provider object.
+  <a href={AEP_REPO}>Agentic Evidence Pipeline</a> demonstrates the durable version of the same
+  concerns: jobs, human approval, retries, idempotency, and an audit trail.
 </p>
 
-<h2>Selected AEP and Infra24 evidence</h2>
+<h2>Asset gates before founder outreach</h2>
 <ul>
-  <li>
-    <a href={AEP_REPO}>agentic-evidence-pipeline</a> — durable jobs, state machines, human approval, retries, audit trail.
-    Technical leverage for Creative Lead, not a parallel Backend application.
-  </li>
-  <li>
-    Infra24 — field/product evidence for physical-digital workshop systems. README repair is in
-    <code>docs/github-audit/</code> on this repo until the public README is updated.
-  </li>
+  <li>Run the workflow once against current Krea APIs with a funded account.</li>
+  <li>Replace or supplement fixture boards with clearly labeled real outputs.</li>
+  <li>Record a 60–90 second walkthrough using only the verified live run.</li>
 </ul>
 
-<h2>Limitations</h2>
-<ul>
-  <li>Replay stills are authored fixtures until one funded live run is recorded.</li>
-  <li>API balance is a separate USD wallet; HTTP 402 if empty. Failed/cancelled jobs are not billed.</li>
-  <li>Not CAD. Not Krea-endorsed. Agentic Ops remains <strong>building</strong> if the GitHub pin still points at an uninspectable repo.</li>
-</ul>
-
-<p><a href="{FIELD_STUDIO}">Field Studio source</a></p>
+<p><a href={FIELD_STUDIO_REPO} rel="noreferrer" target="_blank">Field Studio source</a></p>
 
 <style>
   .claim { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
